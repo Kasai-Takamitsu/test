@@ -1,0 +1,15 @@
+<template>
+    <lightning-tree-grid
+        columns = {gridColumns}
+        data = {gridData}
+        key-field = "Id"
+        hide-checkbox-column = true
+        onheaderaction = {handleHeaderAction}
+    >
+    </lightning-tree-grid>
+
+    <!-- クエリパラメータc__viewType から受け取った結果を表示 -->
+    <!-- <div>
+        hello, {viewType}
+    </div> -->
+</template>

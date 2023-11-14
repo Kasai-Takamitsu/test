@@ -1,0 +1,69 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-8 slds-p-horizontal_small">
+                <!-- <lightning-input label="ファンドコード" value={fundCode} onchange={handleFundCodeChange}></lightning-input> -->
+                <!-- <lightning-input label="ファンドコード" value={fundCodeDefault} onchange={handleFundCodeChange}></lightning-input> -->
+                <!-- <lightning-input label="ファンドコード" value={fundDefault.Name} onchange={handleFundCodeChange}></lightning-input> -->
+                <!-- <lightning-input label="ファンドコード" value={fundDefault} onchange={handleFundCodeChange}></lightning-input> -->
+                <lightning-input label="ファンドコード" value={!$CurrentPage.parameters.Name} onchange={handleFundCodeChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-8 slds-p-horizontal_small">
+                <!-- <lightning-input label="ファンド名" value={fundName} onchange={handleFundNameChange}></lightning-input> -->
+                <!-- <lightning-input label="ファンド名" value={fundDefault.FundName__c} onchange={handleFundNameChange}></lightning-input> -->
+                <!-- <lightning-input label="ファンド名" value={fundDefault} onchange={handleFundNameChange}></lightning-input> -->
+                <lightning-input label="ファンド名" value={!$CurrentPage.parameters.FundName__c} onchange={handleFundNameChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-8 slds-p-horizontal_small">
+                <!-- <lightning-input type="date" label="基準日" value={standardDate} onchange={handleStandardDateChange}></lightning-input> -->
+                <lightning-input type="date" label="基準日" value={dateValue} onchange={handleStandardDateChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-p-horizontal_large slds-p-top_large">
+                <lightning-button label="検索" onclick={searchCashFlowMngs}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-m-around_small" style="height:605px">
+            <!-- <lightning-datatable
+                key-field="id"
+                data={recordsToDisplay}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                resize-column-disabled>
+            </lightning-datatable> -->
+            <lightning-datatable
+                key-field="id"
+                data={recordsToDisplay}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread" style="padding-top: 0.5em;">
+            <!--PAGE NAVIGATION-->
+            <div class="slds-align_absolute-center" style="height:40px">
+                <!-- <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button> -->
+                <lightning-button disabled={bDisableFirst} icon-name="utility:jump_to_left" class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+
+                <!-- <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={previousPage}></lightning-button> -->
+                <lightning-button disabled={bDisableFirst} icon-name="utility:chevronleft" alternative-text="Previous" onclick={previousPage}></lightning-button>
+                &nbsp;
+                <!-- <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span> -->
+                <span class="slds-badge">{pageNumber} &nbsp;/&nbsp; {totalPages} &nbsp;&nbsp;ページ</span>
+                &nbsp;
+                <!-- <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button> -->
+                <lightning-button disabled={bDisableLast} icon-name="utility:chevronright" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+
+                <!-- <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" label="Last" alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button> -->
+                <lightning-button disabled={bDisableLast} icon-name="utility:jump_to_right" alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+            </div>
+
+            <!--TOTAL RECORDS-->
+            <div class="slds-clearfix">
+                <div class="slds-float_right">
+                    <!-- <span class="slds-badge"> Total Records: {totalRecords}</span> -->
+                    <span class="slds-badge"> レコード件数: {totalRecords}</span>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
