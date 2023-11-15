@@ -143,6 +143,7 @@ export default class CashFlowMngSearch extends LightningElement {
             this.recordsToDisplay.push(this.records[i]);
         }
     }
+
     // CurrentPageReference を利用してパラメータを取得する。
     currentPageReference;
 
@@ -152,9 +153,11 @@ export default class CashFlowMngSearch extends LightningElement {
     }
 
     // .state.c__fundCodeDefault とすることで、URLパラメータから値を受け取れる
-    get fundDefault() {
-        return this.currentPageReference ? this.currentPageReference.state.c__fundDefault : undefined;
+    get fundCodeDefault() {
+        return this.currentPageReference ? this.currentPageReference.state.c__fundCodeDefault : undefined;
     }
-    
+    get fundNameDefault() {
+        return this.currentPageReference ? this.currentPageReference.state.c__fundNameDefault : undefined;
+    }
 
 }

@@ -59,7 +59,9 @@ export default class TreeGrid extends LightningElement {
                 // 相対パスURLに、パラメータを渡す
                 // o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC + '?c__viewType=world';
                 // o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC +  '?c__fundCodeDefault=' + o.fundTreeName;
-                o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC +  '?c__fundDefault=' + o.Id;
+                // o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC +  '?c__fundDefault=' + o.Id;
+                // o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC + '?c__fundCodeDefault=' + o.fundTreeName;
+                o.TransitionToCashFlowDelC = o.TransitionToCashFlowDelC + '?c__fundCodeDefault=' + o.fundTreeName + '&c__fundNameDefault=' + o.fundNameC;
             });
             
             this.gridData = tempData;
