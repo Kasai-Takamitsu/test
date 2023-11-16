@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-12 slds-p-horizontal_small">
+                <lightning-input label="ファンドコード" value={fundCode} onchange={handleFundCodeChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-12 slds-p-horizontal_small">
+                <lightning-input label="ファンド名" value={fundName} onchange={handleFundNameChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-12 slds-p-horizontal_small">
+                <!-- <lightning-input type="date" label="基準日" value={standardDate} onchange={handleStandardDateChange}></lightning-input> -->
+                <lightning-input type="date" label="基準日" value={dateValue} onchange={handleStandardDateChange}></lightning-input>
+            </div>
+            <div class="slds-col slds-p-horizontal_large slds-p-top_large">
+                <lightning-button label="検索" onclick={search}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-m-around_small" style="height:600px;">
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                show-row-number-column
+                hide-checkbox-column
+                enable-infinite-loading
+                is-loading={isLoading}
+                onloadmore={handleLoadMore}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
