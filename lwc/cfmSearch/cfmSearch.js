@@ -40,7 +40,7 @@ export default class CashFlowMngSearch extends LightningElement {
     }
 
     get dateValue(){
-        if(this.dateval == undefined){
+        if(this.dateval === undefined){
             this.dateval = new Date().toISOString().substring(0, 10);
         }
         return this.dateval;
@@ -53,14 +53,14 @@ export default class CashFlowMngSearch extends LightningElement {
      * 最初のページか判定
      */
     get bDisableFirst() {
-        return this.pageNumber == 1;
+        return this.pageNumber === 1;
     }
 
     /**
      * 最後のページか判定
      */
     get bDisableLast() {
-        return this.pageNumber == this.totalPages;
+        return this.pageNumber === this.totalPages;
     }
 
     searchCashFlowMngs() {
@@ -150,6 +150,19 @@ export default class CashFlowMngSearch extends LightningElement {
     @wire(CurrentPageReference)
     setCurrentPageReference(currentPageReference) {
         this.currentPageReference = currentPageReference;
+        if (currentPageReference.state.c__fundCodeDefault === undefined) {
+            this.fundCode = '';
+        } else {
+            this.fundCode = currentPageReference.state.c__fundCodeDefault;
+        }
+        if (currentPageReference.state.c__fundNameDefault === undefined) {
+            this.fundName = '';
+        } else {
+            this.fundName = currentPageReference.state.c__fundNameDefault;
+        }
+        console.log('this.currentPageReference--> ' + JSON.stringify(this.currentPageReference));
+        console.log('this.fundCode--> ' + JSON.stringify(this.fundCode));
+        console.log('this.fundName--> ' + JSON.stringify(this.fundName));
     }
 
     // .state.c__fundCodeDefault とすることで、URLパラメータから値を受け取れる
@@ -159,5 +172,4 @@ export default class CashFlowMngSearch extends LightningElement {
     get fundNameDefault() {
         return this.currentPageReference ? this.currentPageReference.state.c__fundNameDefault : undefined;
     }
-
 }
